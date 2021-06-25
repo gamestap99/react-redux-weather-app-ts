@@ -1,0 +1,63 @@
+.main{
+  background: #EBEDEF;
+  //height:900px;
+  min-height:  100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ant-card{
+  alignment: center;
+  padding: 15px;
+  border: 1px solid #d8dbe0;
+  display: flex;
+  border-radius: .50rem;
+  flex-direction: column;
+  position: relative;
+
+
+
+
+
+
+  //background-color: #222222;
+}
+
+.card{
+  align-items: center;
+  //background-color: #481499;
+}
+
+.ant-btn-primary{
+  margin-top: 20px;
+  background-color: #321fdb;
+}
+
+.ant-input{
+  margin-bottom: 15px;
+}
+
+.container{
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+//@media screen and (min-width: 576px){
+//  .container{
+//    width: 540px;
+//  }
+//}
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  justify-content: center!important;
+  &.justify-content-center{
+    justify-content: center!important;
+  }
+}

@@ -1,13 +1,14 @@
 import IRoute from "../models/IRoute"
 import HomeScreen from "../presentation/HomeScreen";
-import Weather from "../Weather";
+import Weather from "../presentation/screens/Weather";
 import NotFound from "../presentation/components/NotFoundItem";
+import {LoginScreen} from "../presentation/screens/authen/LoginScreen";
 
 const routes: IRoute[] = [
     {
         path: '/',
         name: 'Home Page',
-        component: HomeScreen,
+        component: LoginScreen,
         exact: true
     },
     {

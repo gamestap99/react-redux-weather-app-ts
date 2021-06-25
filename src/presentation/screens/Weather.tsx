@@ -1,15 +1,22 @@
-import {IWeather} from "./IWeather";
+import {IWeather} from "../../IWeather";
 import React from "react";
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
-import {WeatherContainer} from "./containers/weatherContainer";
+import {WeatherContainer} from "../../containers/weatherContainer";
 
 const Weather:React.FunctionComponent = props =>  {
     const {
         weather,
         setQuery,
         query,
-        search
+        search,
     } = WeatherContainer();
+
+    React.useEffect(
+        ()=>{
+            console.log("weather screen")
+
+        },[]
+    );
 
     return (
         <div className={(weather.main !== "undefined") ? ((weather.main?.temp! > 16) ? 'app warm' : 'app') : 'app'}>
