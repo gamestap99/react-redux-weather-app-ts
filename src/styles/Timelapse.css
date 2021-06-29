@@ -1,0 +1,37 @@
+
+.container-timelapse{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.card{
+    display: flex;
+    background-color: white;
+    height: 50px;
+}
+.filter-body{
+    flex-direction: row;
+}
+.card-filter{
+    background-color: white;
+}
+
+.cf-3{
+    padding: 10px;
+}
+.card-filter-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.btn-group{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-end;
+    align-content: flex-end;
+}
+
+.list-timelapse{
+    margin-top: 1em;
+}

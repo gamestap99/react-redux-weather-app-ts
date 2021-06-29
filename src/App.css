@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+h2 {
+  display: block;
+  margin: 50px;
+  padding: 10px;
+  color: black;
+  font-weight: bold;
+  position: relative;
+}
+h2:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: auto;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background-color: #e74c3c;
+  transition: .25s;
+  z-index: -1;
+}
+h2:hover:before {
+  width: 100%;
+  left: 0;
+  right: auto;
+}
