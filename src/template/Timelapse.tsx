@@ -1,109 +1,36 @@
-import {Col, Button, Radio, Form, Input, Card, List,Avatar} from "antd";
-import {UserOutlined, LockOutlined, SearchOutlined, BarsOutlined, TableOutlined} from '@ant-design/icons';
+import {Col, Button, Radio, Form, Input, Card, List, Avatar, Pagination, Skeleton} from "antd";
+import {UserOutlined, LockOutlined, SearchOutlined, BarsOutlined, TableOutlined,} from '@ant-design/icons';
 import "../styles/Timelapse.css";
-import React, { Suspense } from 'react';
+import React, {Suspense, useState} from 'react';
+import LazyLoad from 'react-lazyload';
+import TimelapseItemPlaceHolder from "../placeholder/TimelapseItemPlaceHolder";
+import TimelapseItem from "../components/TimelapseItem";
 
-const { Meta } = Card;
 
-const data = [
-    {
-        title: 'Title 1',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 2',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 3',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 4',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 5',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
-    {
-        title: 'Title 6',
-        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
-    },
 
-];
+const dataTest: Array<any> = Array.apply([], Array(200)).map((a, index) => {
+    return {
+        index: index,
+        title: 'Title ' + index,
+        image: 'https://cdn-sc.autotimelapse.com/files/image/cache/data/space/3D-phoenix%20h%E1%BA%A1%20long-354x236-rc_top.png',
+    };
+});
 
 
 const Timelapse = () => {
     const [form] = Form.useForm();
+    const [minItemSize, setMimItemSize] = useState(0);
+    const [maxItemSize, setMaxItemSize] = useState(15);
+
+    const onChangePage = (page: number) => {
+        if (page <= 1) {
+            setMimItemSize(0);
+            setMaxItemSize(15);
+        } else {
+            setMimItemSize((page - 1) * 15);
+            setMaxItemSize(page * 15);
+        }
+    }
 
 
     return (
@@ -152,37 +79,38 @@ const Timelapse = () => {
             </div>
             <div className={"list-timelapse"}>
                 <List
-                    grid={{gutter: 16, column: 4}}
-                    dataSource={data}
+                    grid={{
+                        gutter: 16, xs: 1,
+                        sm: 1,
+                        md: 2,
+                        lg: 3,
+                        xl: 4,
+                        xxl: 4
+                    }}
+                    dataSource={dataTest.slice(minItemSize, maxItemSize)}
                     renderItem={item => (
                         <List.Item>
-                            <TimelapseItem  title={item.title} image={item.image}/>
+                            <LazyLoad key={item.index} height={200} offset={[-200, 0]}
+                                      placeholder={<TimelapseItemPlaceHolder />} debounce={500}>
+                                <TimelapseItem title={item.title} image={item.image}/>
+                            </LazyLoad>
+
                             {/*<Card title={item.title}>Card content</Card>*/}
                         </List.Item>
                     )}
                 />
             </div>
+            <div className={"pagination-timelapse"}>
+                <Pagination showQuickJumper total={dataTest.length} defaultCurrent={1}
+                            defaultPageSize={15}
+                            onChange={onChangePage}/>
+            </div>
         </div>
     );
 }
 
-const TimelapseItem = (props:any) => (
-    <Card
-        cover={
-            <img
 
-                src={props.image}
-            />
-        }
-    >
 
-        <Meta
-            avatar={<Avatar src={props.image} />}
-            title="Card title"
-            description="This is the description"
-        />
 
-    </Card>
-);
 
 export default Timelapse;
